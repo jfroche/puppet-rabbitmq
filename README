@@ -11,3 +11,5 @@ include rabbitmq::mcollective
 == Requires ==
 - Depends on yum module (Redhat or CentOS), available here:
   https://github.com/vurbia/puppet-yum
+- Depends on concat module, available here:
+  https://github.com/puppet-modules/puppet-concat
