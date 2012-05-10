@@ -32,8 +32,9 @@ $write    = '.*') {
         onlyif  => "/usr/bin/test `rabbitmqctl -q list_users | /bin/grep '^${name}\t' | wc -l` -gt 0",
       }
     }
-    default:
+    default: {
       fail 'Ensure must be present or absent'
+    }
   }
 
   rabbitmq::permissions { $name:
