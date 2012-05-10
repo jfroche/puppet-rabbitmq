@@ -1,0 +1,1 @@
+	{rabbit_stomp, [ {tcp_listeners, [ {"<%= scope.lookupvar('rabbitmq::params::stomp_ipv4_address') %>", <%= scope.lookupvar('rabbitmq::params::stomp_ipv4_port') %>}]} ]},

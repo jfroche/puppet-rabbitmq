@@ -2,7 +2,10 @@
 #
 #
 class rabbitmq::plugins::amqp {
-	rabbitmq::plugin { 'amqp_client':
-		ensure => present,
-	}
+  rabbitmq::plugin {
+    'amqp_client':
+      ensure   => present,
+      filename => "amqp_client-${rabbitmq::params::version}.ez",
+      require  => Package['wget']
+  }
 }
