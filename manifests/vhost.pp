@@ -5,6 +5,7 @@ define rabbitmq::vhost ($ensure   = present) {
         command => "/usr/sbin/rabbitmqctl add_vhost '${name}'",
         onlyif  => "/usr/bin/test `rabbitmqctl -q list_vhosts |
   /bin/grep  '^${name}' | wc -l` -eq 0",
+        require => Service['rabbitmq-server']
       }
     }
     absent: {
@@ -12,6 +13,7 @@ define rabbitmq::vhost ($ensure   = present) {
         command => "/usr/sbin/rabbitmqctl delete_vhost '${name}'",
         onlyif  => "/usr/bin/test `rabbitmqctl -q list_vhosts |
   /bin/grep '^${name}' | wc -l` -gt 0",
+        require => Service['rabbitmq-server']
       }
     }
     default: {
@@ -19,6 +21,7 @@ define rabbitmq::vhost ($ensure   = present) {
         command => "/usr/sbin/rabbitmqctl add_vhost '${name}'",
         onlyif  => "/usr/bin/test `rabbitmqctl -q list_vhosts |
   /bin/grep  '^${name}' | wc -l` -eq 0",
+        require => Service['rabbitmq-server']
       }
     }
   }
