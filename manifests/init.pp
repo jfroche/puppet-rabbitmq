@@ -2,11 +2,6 @@
 #
 #
 class rabbitmq {
-    package {
-        'wget':
-            ensure => 'installed'
-    }
-
     require rabbitmq::params
     include rabbitmq::install
     include rabbitmq::config
