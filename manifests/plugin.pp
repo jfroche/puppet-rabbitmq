@@ -24,11 +24,11 @@ $filename     = '') {
 #    require    => Class['rabbitmq::config']
 #  }
 #
-#  if $config {
-#    concat::fragment { "rabbitmq.config-${name}":
-#      target  => "${rabbitmq::params::configdir}/rabbitmq.config",
-#      order   => $config_order,
-#      content => template("rabbitmq/plugins/rabbitmq.config.${name}.erb"),
-#    }
-#  }
+  if $config {
+    concat::fragment { "rabbitmq.config-${name}":
+      target  => "${rabbitmq::params::configdir}/rabbitmq.config",
+      order   => $config_order,
+      content => template("rabbitmq/plugins/rabbitmq.config.${name}.erb"),
+    }
+  }
 }
